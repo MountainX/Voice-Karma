@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string-array name="calling_methods">
+		<item>@string/call_back</item>
+		<item>@string/dial_out</item>
+	</string-array>
+	<string-array name="call_log_types">
+		<item>Placed</item>
+		<item>Received</item>
+		<item>Missed</item>
+	</string-array>
+	<string-array name="voicemail_intervals">
+		<item>Never</item>
+		<item>Every minute</item>
+		<item>Every 5 minutes</item>
+		<item>Every 15 minutes</item>
+		<item>Every 30 minutes</item>
+		<item>Once per hour</item>
+		<item>Every 6 hours</item>
+		<item>Every 12 hours</item>
+		<item>Once per day</item>
+	</string-array>
+	<string-array name="voicemail_intervals_values">
+		<item>0</item>
+		<item>1</item>
+		<item>5</item>
+		<item>15</item>
+		<item>30</item>
+		<item>60</item>
+		<item>360</item>
+		<item>720</item>
+		<item>1440</item>
+	</string-array>
+	<string-array name="phone_types">
+		<item>Home</item>
+		<item>Mobile</item>
+		<item>Work</item>
+		<item>Gizmo</item>
+	</string-array>
+	<string-array name="phone_policies">
+		<item>No direct access</item>
+		<item>PIN required</item>
+		<item>PIN not required</item>
+	</string-array>
+	<string-array name="call_screens">
+		<item>Unknown #</item>
+		<item>No one</item>
+		<item>Blocked #</item>
+	</string-array>
+</resources>

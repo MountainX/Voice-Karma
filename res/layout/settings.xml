@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+	xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+>
+	<PreferenceScreen
+		android:title="@string/settings_login_information"
+		android:description="@string/settings_login_information_description"
+	>
+		<intent
+			android:action="android.intent.action.DEFAULT"
+			android:targetPackage="com.evancharlton.googlevoice"
+			android:targetClass="com.evancharlton.googlevoice.ui.setup.LoginInformation"
+		/>
+	</PreferenceScreen>
+	<PreferenceScreen
+		android:title="@string/settings_edit_phones"
+		android:description="@string/settings_edit_phones_description"
+	>
+		<intent
+			android:action="android.intent.action.DEFAULT"
+			android:targetPackage="com.evancharlton.googlevoice"
+			android:targetClass="com.evancharlton.googlevoice.ui.setup.PhoneNumbers"
+		/>
+	</PreferenceScreen>
+	<PreferenceScreen
+		android:title="@string/settings_gv"
+		android:description="@string/settings_gv_description"
+	>
+		<intent
+			android:action="android.intent.action.DEFAULT"
+			android:targetPackage="com.evancharlton.googlevoice"
+			android:targetClass="com.evancharlton.googlevoice.ui.setup.ApplicationSettings"
+		/>
+	</PreferenceScreen>
+	<CheckBoxPreference
+		android:title="@string/settings_do_not_disturb"
+		android:summaryOn="@string/settings_do_not_disturb_on"
+		android:summaryOff="@string/settings_do_not_disturb_off"
+		android:defaultValue="false"
+		android:key="do_not_disturb"
+	/>
+</PreferenceScreen>

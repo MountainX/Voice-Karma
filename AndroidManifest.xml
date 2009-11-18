@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+	  package="com.evancharlton.googlevoice"
+	  android:versionCode="2520"
+	  android:versionName="2.5.2">
+	<uses-permission android:name="android.permission.INTERNET"/>
+	<uses-permission android:name="android.permission.READ_CONTACTS"/>
+	<uses-permission android:name="android.permission.WRITE_CONTACTS"/>
+	<uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+	<uses-permission android:name="android.permission.CALL_PHONE"/>
+	<uses-permission android:name="android.permission.CALL_PRIVILEGED"/>
+	<uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+	<uses-permission android:name="android.permission.WAKE_LOCK"/>
+	<uses-permission android:name="android.permission.PROCESS_OUTGOING_CALLS"/>
+	<uses-permission android:name="android.permission.VIBRATE"/>
+	<uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+	<uses-sdk android:minSdkVersion="3"/>
+	<application android:icon="@drawable/icon" android:label="@string/app_name">
+		<activity
+			android:name=".GoogleVoice"
+			android:label="@string/app_name"
+			android:launchMode="singleTask"
+			android:theme="@android:style/Theme.NoTitleBar"
+		>
+			<intent-filter>
+				<action android:name="android.intent.action.MAIN" />
+				<category android:name="android.intent.category.LAUNCHER" />
+			</intent-filter>
+			<intent-filter>
+				<action android:name="android.intent.action.CALL_BUTTON" />
+				<category android:name="android.intent.category.DEFAULT" />
+			</intent-filter>
+			<intent-filter>
+				<action android:name="android.intent.action.CALL" />
+				<category android:name="android.intent.category.DEFAULT" />
+				<data android:scheme="gv"/>
+			</intent-filter>
+		</activity>
+		<activity android:name=".ui.DialerView"/>
+		<activity android:name=".ui.SettingsView" android:label="@string/settings_title"/>
+		<activity android:name=".ui.VoicemailView" android:label="@string/title_voicemail" android:exported="true"/>
+		<activity android:name=".ui.CallLogActivity" android:label="@string/title_call_log" android:exported="true"/>
+		<activity android:name=".ui.VoicemailPlayer" android:title="@string/loading"/>
+		<activity android:name=".ui.SMSThreads" android:label="@string/gv_sms" android:exported="true"/>
+		<activity android:name=".ui.ThreadView" android:label="@string/loading" android:exported="true" android:theme="@android:style/Theme.Light"/>
+		<activity android:name=".ui.SMSCompose" android:label="@string/compose_gv_sms" android:theme="@android:style/Theme.Light">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <action android:name="android.intent.action.SENDTO" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="sms" />
+                <data android:scheme="smsto" />
+                <data android:scheme="gvsms" />
+            </intent-filter>
+		</activity>
+		<activity android:name=".ui.ContactsView"/>
+		<activity android:name=".ui.ViewContactActivity" android:theme="@android:style/Theme.NoTitleBar"/>
+		<activity android:name=".ui.setup.WizardSplash" android:label="@string/setup_googlevoice"/>
+		<activity android:name=".ui.setup.LoginInformation" android:label="@string/setup_login_information"/>
+		<activity android:name=".ui.setup.PhoneNumbers" android:label="@string/setup_edit_phones"/>
+		<activity android:name=".ui.setup.EditPhone" android:label="@string/setup_edit_phone"/>
+		<activity android:name=".ui.setup.AddPhone" android:label="@string/setup_add_phone"/>
+		<activity android:name=".ui.setup.ApplicationSettings" android:label="@string/setup_local_settings"/>
+		<activity android:name=".ShortcutCreator" android:label="@string/title_gv_shortcut">
+			<intent-filter>
+				<action android:name="android.intent.action.CREATE_SHORTCUT"/>
+				<category android:name="android.intent.category.DEFAULT"/>
+			</intent-filter>
+		</activity>
+		
+		<receiver android:name=".receivers.OutgoingCallReceiver" android:exported="true" android:enabled="true">
+			<intent-filter android:priority="9999"> <!-- hopefully this will put us first in line -->
+				<action android:name="android.intent.action.NEW_OUTGOING_CALL"/>
+			</intent-filter>
+		</receiver>
+		<receiver android:name=".receivers.PhoneStateReceiver" android:exported="true" android:enabled="true">
+			<intent-filter>
+				<action android:name="android.intent.action.PHONE_STATE"/>
+			</intent-filter>
+		</receiver>
+		<receiver android:name=".receivers.BootReceiver" android:exported="true" android:enabled="true">
+			<intent-filter>
+				<action android:name="android.intent.action.BOOT_COMPLETED"/>
+				<action android:name="android.intent.action.DEVICE_STORAGE_LOW"/>
+				<action android:name="android.intent.action.DEVICE_STORAGE_OK"/>
+				<category android:name="android.intent.category.DEFAULT"/>
+			</intent-filter>
+		</receiver>
+		<service android:name=".services.UnreadService"/>
+	</application>
+</manifest> 

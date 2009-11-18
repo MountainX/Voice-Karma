@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge
+		xmlns:android="http://schemas.android.com/apk/res/android"
+>
+	<LinearLayout
+		android:layout_width="fill_parent"
+		android:layout_height="fill_parent"
+		android:gravity="center"
+		android:orientation="vertical"
+	>
+		<Spinner
+			android:id="@+id/call_log_type"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:entries="@array/call_log_types"
+		/>
+		<ListView
+			android:layout_weight="1"
+			android:layout_width="fill_parent"
+			android:layout_height="fill_parent"
+			android:id="@android:id/list"
+			android:choiceMode="singleChoice"
+			android:fastScrollEnabled="true"
+		/>
+	</LinearLayout>
+	<include layout="@layout/progress_overlay"/>
+</merge>
